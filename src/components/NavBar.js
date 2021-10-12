@@ -1,7 +1,7 @@
+import { CartWidget } from './CartWidget';
+import logo from './images/logo.svg';
 
-import logo from '../images/logo.svg';
-
-export const NavHeader = () => {
+export const NavBar = () => {
     return (
         <nav className="nav">
             <a href="/#" >
@@ -14,6 +14,7 @@ export const NavHeader = () => {
                     <li><a href="/#">Contacto</a></li>
                 </ul>
             </div>
+            <CartWidget />
         </nav>
     );  
 }

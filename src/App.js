@@ -1,4 +1,5 @@
 import './App.css';
+import { ItemCard } from './components/ItemCard';
 import { ItemListContainer } from './components/ItemListContainer';
 /*componentes*/
 import { NavBar } from './components/NavBar';
@@ -12,7 +13,9 @@ function App() {
         <NavBar />
       </div>
       <section className='catalogue'>
-        <ItemListContainer greeting="Acá va el catálogo de productos"  />
+        <ItemListContainer greeting="Productos">
+          <ItemCard/>
+        </ItemListContainer>
       </section>
 
     </div>

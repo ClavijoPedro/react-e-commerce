@@ -49,19 +49,25 @@
   width: 35px;
 }
 
-/* seccion catalogo*/
+/* item List*/
 
-.catalogue{
+.itemList{
   width: 75%;
   margin:auto;
   height: 85vh;
   padding-top: 2%;
-  background-position: center;
-  background-size: cover;
-  
 }
 
 /* cards items*/
+
+.cardContainer{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
 
 .card{
   background-color: rgb(245, 245, 245);
@@ -70,6 +76,7 @@
   height: 380px;
   border-radius: 10px;
   overflow: hidden;
+  margin-bottom: 50px;
 }
 
 .cardImg{

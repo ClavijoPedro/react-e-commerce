@@ -1,0 +1,58 @@
+[
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 1",
+       "id":"1",
+       "price": 160
+   },
+
+   {
+       "image": "http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 2",
+       "id":"2",
+       "price": 35
+   },
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 3",
+       "id":"3",
+       "price": 120
+   },
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 4",
+       "id":"4",
+       "price": 45
+   },
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 5",
+       "id":"5",
+       "price": 100
+   },
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 6",
+       "id":"6",
+       "price": 80
+   },
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 7",
+       "id":"7",
+       "price": 90
+   },
+   {
+       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
+       "name":"producto 8",
+       "id":"8",
+       "price": 300
+   }
+]
+
+
+
+    
+
+        
+    

@@ -1,54 +1,72 @@
 [
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 1",
-       "id":"1",
-       "price": 160
-   },
-
-   {
-       "image": "http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 2",
-       "id":"2",
-       "price": 35
-   },
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 3",
-       "id":"3",
-       "price": 120
-   },
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 4",
-       "id":"4",
-       "price": 45
-   },
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 5",
-       "id":"5",
-       "price": 100
-   },
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 6",
-       "id":"6",
-       "price": 80
-   },
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 7",
-       "id":"7",
-       "price": 90
-   },
-   {
-       "image":"http://www.panelek.com.pe/backend/vistas/images/productos/productos_default.png",    
-       "name":"producto 8",
-       "id":"8",
-       "price": 300
-   }
-]
+    {
+        "id":"1",
+        "type":"pantalones",
+        "image":"https://assets.adidas.com/images/h_840,f_auto,q_auto:sensitive,fl_lossy,c_fill,g_auto/dab8f703f34f4500ac45ad1d0138cc38_9366/Pantalon_Own_the_Run_Astro_Wind_Negro_H13238_21_model.jpg",    
+        "name":"jogging",
+        "description": "descripcion del producto elegido",
+        "price": 3000
+        
+    },
+ 
+    {
+        "id":"2",
+        "type":"pantalones",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_760301-MLA31021346396_062019-O.webp",    
+        "name":"trabajo",
+        "description": "descripcion del producto elegido",
+        "price": 2000
+    },
+    {
+        "id":"3",
+        "type":"pantalones",
+        "image":"https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Jeans_for_men.jpg/220px-Jeans_for_men.jpg",    
+        "name":"jean",
+        "description": "descripcion del producto elegido",
+        "price": 2500
+    },
+    {
+        "id":"4",
+        "type":"pantalones",
+        "image":"https://i.pinimg.com/170x/0c/34/96/0c3496561135103f257c816223b88395.jpg",    
+        "name":"pescador",
+        "description": "descripcion del producto elegido",
+        "price": 4000
+    },
+    {
+        "id":"5",
+        "type":"remeras",
+        "image":"https://static.dafiti.com.ar/p/eyelit-0452-98742-1-product.jpg",    
+        "name":"blanca",
+        "description": "descripcion del producto elegido",
+        "price": 600
+ 
+    },
+    {
+        "id":"6",
+        "type":"remeras",
+        "image":"https://static.dafiti.com.ar/p/clon-6449-917293-1-product.jpg",    
+        "name":"negra",
+        "description": "descripcion del producto elegido",
+        "price": 800
+    },
+    {
+        "id":"7",
+        "type":"zapatillas",
+        "image":"https://topperarg.vteximg.com.br/arquivos/ids/248160-700-700/052507.jpg?v=637566178419730000",    
+        "name":"deportiva",
+        "description": "descripcion del producto elegido",
+        "price": 10000
+    },
+    {
+        "id":"8",
+        "type":"zapatillas",
+        "image":"http://www.joule.com.ar/img/p/5/3/53-home_default.jpg",    
+        "name":"trabajo",
+        "description": "descripcion del producto elegido",
+        "price": 8500
+    }
+ ]
 
 
 

@@ -1,0 +1,19 @@
+export const ItemDetail = ({item}) => {
+    return (
+
+        <div className="detailContainer">
+            {item}
+
+            <div className="itemDetailHeader">
+                <h2 className="itemDetailName">{item.name}</h2>
+            </div>
+            <div className="itemDetailBody">
+                <img className="detailImg" src={item.image} alt="detailImg" />
+                <div className="itemDetailInfo">
+                    <p className="itemDetailText">{item.price}</p>
+                </div>
+            </div>
+
+        </div>
+    )
+}

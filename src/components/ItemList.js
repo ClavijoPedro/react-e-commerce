@@ -6,11 +6,11 @@ export const ItemList = ({ items }) => {
     console.log(`esto es item list ${items}`)
     
     return (
-        /*si items es true mapea los productos al componente item sino renderiza loading...*/
+        /*si items es true mapea los productos al componente item y lo pasa por parametro sino renderiza loading...*/
         <>
             {items ? items.map(producto =>
              <Item item={producto} key={producto.id} /> 
-            ) : "loading items..."}
+            ) : "Cargando Productos..."}
         </>
     )
 }

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Counter } from "./Counter";
 
 
@@ -9,7 +10,10 @@ export const Item = ({item}) =>{
             <div className="cardBody">
                 <h5 className="cardTitle">{item.name}</h5>
                 <p>${item.price}</p>
-                <Counter stock={2} initial={1}/>
+                <Link to={`/item/${item.id}`}>
+                    <button className="btn">ver detalle</button>
+                </Link>
+                <Counter stock={item.stock} initial={1}/>
             </div>
         </div>
     );

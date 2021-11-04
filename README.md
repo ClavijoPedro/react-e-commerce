@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Proyecto Curso React - Tienda E-commerce
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este es un proyecto realizado como parte del cursada de React.js en Coderhouse. Se trata de una tienda e-commerce realizada mediante distintos componentes que renderizan productos provenientes de una API o JSON. Los mismos se presentan en conjunto o filtrados por categorias, pudiendo modificar sus cantidades y ser ampliados a vista de detalle antes de ser ingresados al carrito.   
 
 ## Available Scripts
 

@@ -2,6 +2,7 @@ import {Counter} from './Counter';
 
 export const ItemDetail = ({item}) => {
     console.log(item)
+    /*tomo la props item que pase por parametro y renderizo el producto*/
     return(
         <div className="detailContainer">
             <div className="itemDetailHeader">
@@ -12,7 +13,7 @@ export const ItemDetail = ({item}) => {
                 <div className="itemDetailInfo">
                     <p className="itemDetailText">{item.description}</p>
                     <p>${item.price}</p>
-                    <Counter stock={2} initial={1} />
+                    <Counter stock={item.stock} initial={1} />
                 </div>
             </div>
         </div>

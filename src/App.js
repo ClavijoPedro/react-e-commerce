@@ -1,33 +1,34 @@
 import './App.css';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link,
-//   BrowserRouter
-// } from "react-router-dom";
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 
 /*componentes*/
 import {NavBar} from './components/NavBar'
 import { ItemDetailContainer } from './components/ItemDetailContainer';
-// import { ItemListContainer } from './components/ItemListContainer';
+import { ItemListContainer } from './components/ItemListContainer';
 
 
 
 function App() {
   return (
-    <div className='App'>
-      <div className="App-header">
-        <NavBar />
-      </div>
-      {/* <section className='itemList'>
-        <ItemListContainer /> 
-      </section> */}
-      <section >
-        <ItemDetailContainer /> 
-      </section>
-    </div>
+    <BrowserRouter>
+      <NavBar />
+      <Switch>
+          <Route exact path="/">
+            <ItemListContainer />
+          </Route>
+          <Route exact path="/category/:categoryId">
+            <ItemListContainer />
+          </Route>
+          <Route path="/item/:id">
+            <ItemDetailContainer /> 
+          </Route>
+      </Switch>
+    </BrowserRouter>
   );
 }
 

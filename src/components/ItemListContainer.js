@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
 import Products from '../Products.json'
+import { useParams } from "react-router";
 
-export const ItemListContainer = () => {  
+export const ItemListContainer = () => {
+    const {categoryId} = useParams();  
     const [item, setItem] = useState(null);  
     const getItems = (data) => 
         new Promise((resolve,reject) => {
@@ -14,21 +16,23 @@ export const ItemListContainer = () => {
                 }  
             }, 500);
         });
-  
+    console.log(useParams())    
     useEffect(() => {
         getItems(Products)
-        .then(result => (setItem(result)))
+        .then(res => {
+            categoryId ? setItem(res.filter(prod => prod.type === categoryId)) : setItem(res);
+        })
         .catch((error) => console.log(error))
         .finally(console.log("item list printed"))
         
-    }, []);
-
-    console.log(`esto es item list container ${item}`)
+    }, [categoryId]);
 
     return(
         /*le asigno una prop items que tiene el como valor la variable item de la promise*/
-        <div className="cardContainer">
-            <ItemList items={item} />
-        </div>
+        <section className="itemList">
+            <div className="cardContainer">
+                <ItemList items={item} />
+            </div>
+        </section>
     );
 }

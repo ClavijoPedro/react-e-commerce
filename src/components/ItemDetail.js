@@ -1,7 +1,18 @@
-import {Counter} from './Counter';
+import { useState } from 'react';
+import { Button } from './Button';
+import {ItemCount} from './ItemCount';
 
 export const ItemDetail = ({item}) => {
-    console.log(item)
+    /*creo el estado para el componente itemCount*/
+    const [itemsToCart, setItemsToCart] = useState(true)
+    
+    const itemQty = (qty) => {
+        if(itemsToCart){
+            setItemsToCart(false)
+        }
+    }
+    
+    
     /*tomo la props item que pase por parametro y renderizo el producto*/
     return(
         <div className="detailContainer">
@@ -13,7 +24,10 @@ export const ItemDetail = ({item}) => {
                 <div className="itemDetailInfo">
                     <p className="itemDetailText">{item.description}</p>
                     <p>${item.price}</p>
-                    <Counter stock={item.stock} initial={1} />
+                    {itemsToCart ? 
+                    <ItemCount stock={item.stock} initial={1} onAdd={itemQty} /> 
+                    : <Button link= "/cart" action="Ir al Carrito" /> 
+                    }
                 </div>
             </div>
         </div>

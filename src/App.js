@@ -10,6 +10,7 @@ import {
 import {NavBar} from './components/NavBar'
 import { ItemDetailContainer } from './components/ItemDetailContainer';
 import { ItemListContainer } from './components/ItemListContainer';
+import { Cart } from './components/Cart';
 
 
 
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/item/:id">
             <ItemDetailContainer /> 
+          </Route>
+          <Route exact path="/cart/:cartId">
+            <Cart />
           </Route>
       </Switch>
     </BrowserRouter>

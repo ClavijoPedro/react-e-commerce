@@ -19,6 +19,7 @@ export const ItemDetailContainer = () => {
         },500);
     });
 
+
     useEffect(() => {
         getItem(Products)
         .then(res => {

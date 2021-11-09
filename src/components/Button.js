@@ -1,6 +1,10 @@
-export const Button = (props) => {
+import { Link } from "react-router-dom"
+
+export const Button = ({link, action}) => {
 
     return (
-        <button className="button" href= {props.link}>{props.action}</button>
+        <Link to={link}>
+            <button type="button" className="btn">{action}</button>
+        </Link>
     )
 }

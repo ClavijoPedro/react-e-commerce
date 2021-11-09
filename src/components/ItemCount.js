@@ -1,36 +1,29 @@
 import { useState } from 'react';
 
-export const Counter = ({initial, stock}) => {
+export const ItemCount = ({initial, stock, onAdd}) => {
     const [counter, setCounter] = useState(initial);
     const sum = () => {
         if(stock > 0 && (counter < stock )){
             setCounter(counter + 1);
+            
         }
     };
     const rest = () => {
         if(counter > 1){
             setCounter(counter - 1)};
         }
-    const itemAdd = () => {
-        if(stock === 0){
-           alert("no hay Stock Disponible");  
-        }else{
-            alert("Item Agregado");
-        }
-    }  
+        
     return (
         <>
             <div className="counter">
-                <div className="itemStock">
-                    <p>Stock <span>{stock}</span></p>
-                </div>
                 <div className="itemCount">
                     <button className="btnCounter" onClick = {rest}>-</button>
-                    <p>{counter}</p>
+                    <p className="qtyCounter">{counter}</p>
                     <button className="btnCounter" onClick = {sum}>+</button> 
+                    <p className="itemStock">Stock <span>{stock}</span></p>
                 </div>
             </div>
-            <button className="btn" type="button" onClick={itemAdd}>Agregar al Carrito</button>
+            <button className="btn" type="button" onClick={() => onAdd(counter)}>Agregar al Carrito</button>
         </>
     );
 }

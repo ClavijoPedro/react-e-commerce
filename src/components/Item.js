@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { Counter } from "./Counter";
-
 
 export const Item = ({item}) =>{
 /*recive la prop item (item={pructos}) asignada en itemList e imprime las propiedades de cada uno en una card*/ 
@@ -13,7 +11,6 @@ export const Item = ({item}) =>{
                 <Link to={`/item/${item.id}`}>
                     <button className="btn">ver detalle</button>
                 </Link>
-                <Counter stock={item.stock} initial={1}/>
             </div>
         </div>
     );

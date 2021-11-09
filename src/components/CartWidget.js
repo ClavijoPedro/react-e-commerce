@@ -3,6 +3,6 @@ import cartIcon from './images/cartIcon.png';
 
 export const CartWidget = () =>{  
     return(
-        <Link to="/"><img src={cartIcon} className='iconCart' alt="cartIcon" /></Link>
+        <Link to="/cart"><img src={cartIcon} className='iconCart' alt="cartIcon" /></Link>
     );
 }

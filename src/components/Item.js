@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export const Item = ({item}) =>{
+    
 /*recive la prop item (item={pructos}) asignada en itemList e imprime las propiedades de cada uno en una card*/ 
     return (
         <div className="card">

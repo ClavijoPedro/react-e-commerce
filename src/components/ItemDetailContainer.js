@@ -36,7 +36,7 @@ export const ItemDetailContainer = () => {
 
     return (
         /*paso por props el resultado de la promise a itemdetail*/
-        <section>
+        <section className="itemDetailContainer">
             {itemSelected ? <ItemDetail item={itemSelected} /> : "cargando item..."} 
         </section>
         

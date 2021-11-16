@@ -49,9 +49,29 @@
   justify-content: space-around;
 }
 
+
 .iconCart{
   width: 35px;
   margin-left: 10px;
+}
+
+.cartWidget{
+  position: relative;
+}
+.iconCartCount{
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+  background-color: greenyellow;
+  color: white;
+  position: absolute;
+  right: -15px;
+  top: -25px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.418);
 }
 
 /* item List*/
@@ -231,6 +251,14 @@
   object-fit: cover;
   display: block;
   align-content: center;
+}
+
+/* cartTotal*/
+
+.cartTotal{
+  width: 30%;
+  margin-left: auto;
+  margin-bottom: 50px;
 }
 
 

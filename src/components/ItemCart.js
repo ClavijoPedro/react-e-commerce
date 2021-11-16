@@ -8,9 +8,8 @@ export const ItemCart = ({item}) =>{
             <div className="cartRowInfo">
                 <p>{item.name}</p>
                 <p>{item.description}</p>
-                <p>${item.price}</p>
-                <p>{item.quantity}</p>
-                <button type="button" className="btn" onClick={() => removeItem(item.id)}>X</button>
+                <p>{item.quantity} x <span>${item.price * item.quantity}</span></p>
+                <button type="button" className="btn" onClick={() => removeItem(item.id, item.quantity)}>X</button>
             </div>
         </div>
     );

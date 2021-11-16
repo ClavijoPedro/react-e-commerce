@@ -6,16 +6,14 @@ import {ItemCount} from './ItemCount';
 export const ItemDetail = ({item}) => {
     /*creo el estado para el componente itemCount*/
     const [count, setCount] = useState(true)
-    const[amount, setAmount] = useState(0)
     
-    const countDismount = (amount) => {
+    const countDismount = () => {
         if(count){
             setCount(false)
-            setAmount(amount)
         }
     }
     /*tomo la props item que pase por parametro y renderizo el producto*/
-    /*si count es true renderizo el itemcount sino renderizo el button ir al carrito*/
+    /*si count es true renderizo el itemcount sino renderizo el button ir al carrito y button volver*/
     return(
         <div className="itemDetail">
             <div className="itemDetailBody">
@@ -25,8 +23,10 @@ export const ItemDetail = ({item}) => {
                     <p className="itemDetailText">{item.description}</p>
                     <p>${item.price}</p>
                     {count ? 
-                    <ItemCount stock={item.stock} initial={1} item= {item} onAdd= {countDismount} /> 
-                    : <Button link= "/cart" action={`Ver ${amount} productos`}/> }
+                    <><ItemCount stock={item.stock} initial={1} item= {item} onAdd= {countDismount} />
+                        <Button link= "/" action="volver" /></> 
+                    : <><Button link= "/cart" action={`Terminar compra`}/>
+                        <Button link= "/" action="volver" /> </>}
                 </div>
             </div>
         </div>

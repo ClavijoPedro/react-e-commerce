@@ -1,4 +1,5 @@
 import { Item } from "./Item";
+import { Loader } from "./Loader";
 
 export const ItemList = ({ items }) => {
     /*recibe la prop items (items={item}) que es el array de productos asignados a 
@@ -10,7 +11,7 @@ export const ItemList = ({ items }) => {
         <>
             {items ? items.map(producto =>
              <Item item={producto} key={producto.id} /> 
-            ) : "Cargando Productos..."}
+            ) :<Loader />}
         </>
     )
 }

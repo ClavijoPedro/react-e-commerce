@@ -17,3 +17,60 @@ export const ItemDetail = ({item}) => {
         </div>
     )
 }
+
+
+export const ItemListContainer = () => {
+    const {categoryId} = useParams();  
+    const [item, setItem] = useState(null);  
+    const getItems = (data) => 
+        new Promise((resolve,reject) => {
+            setTimeout(() => {
+                if(data){
+                    resolve(data);
+                }else{
+                    reject("ERROR NO HAY PRODUCTOS");
+                }  
+            }, 500);
+        });
+    console.log(useParams())    
+    useEffect(() => {
+        getItems(Products)
+        .then(res => {
+            categoryId ? setItem(res.filter(prod => prod.type === categoryId)) : setItem(res);
+        })
+        .catch((error) => console.log(error))
+        .finally(console.log("item list printed"))
+        
+    }, [categoryId]);
+
+
+
+
+
+    /* itemdetail */
+
+
+        /* genero el estado y la promesa*/
+    const [itemSelected, setItemSelected] = useState([]);
+    const getItem = (item) =>
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            if(item) {
+                resolve(item);
+            }else{
+                reject("detalle de producto no encontrado");
+            }
+        },500);
+    });
+
+
+    useEffect(() => {
+        getItem(Products)
+        .then(res => {
+            /* filtro el resultado y comparo el id de producto con la url param*/
+            const filterItem = res.find(product => product.id === id)
+            /*seteo el producto filtrado al estado*/
+            setItemSelected(filterItem)})
+        .catch((err) => console.log(err))
+        .finally(console.log("detalle de item impreso"));
+    }, [id]);

@@ -1,37 +1,34 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
-import Products from '../Products.json'
+// import Products from '../Products.json'
 import { useParams } from "react-router";
+import { getFirestore } from "../firebase"; 
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 export const ItemListContainer = () => {
     const {categoryId} = useParams();  
-    const [item, setItem] = useState(null);  
-    const getItems = (data) => 
-        new Promise((resolve,reject) => {
-            setTimeout(() => {
-                if(data){
-                    resolve(data);
-                }else{
-                    reject("ERROR NO HAY PRODUCTOS");
-                }  
-            }, 500);
-        });
-    console.log(useParams())    
+    const [items, setItems] = useState(null);
+    
+  
     useEffect(() => {
-        getItems(Products)
-        .then(res => {
-            categoryId ? setItem(res.filter(prod => prod.type === categoryId)) : setItem(res);
-        })
-        .catch((error) => console.log(error))
-        .finally(console.log("item list printed"))
-        
+        /*guardo la base de datos (db) en una variable */
+        const db = getFirestore();
+            /*filtro la collección por categorias usando url params, sino muestro lista entera*/ 
+            const q = categoryId ? query(collection(db, "items"),
+            where("type", "==", categoryId)) 
+            : collection(db, "items");
+            /* seteo la data al estado de items */
+            getDocs(q).then((snapshot) => {
+                setItems(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
+            })
+  
     }, [categoryId]);
 
     return(
         /*le asigno una prop items que tiene el como valor la variable item de la promise*/
         <section className="itemList">
             <div className="cardContainer">
-                <ItemList items={item} />
+                <ItemList items={items} />
             </div>
         </section>
     );

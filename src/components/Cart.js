@@ -1,5 +1,6 @@
 import { useCartContext } from "../contexts/CartContext";
 import { Button } from "./Button";
+import { CartOrder } from "./CartOrder";
 import { ItemCart } from "./ItemCart";
 
 export const Cart = () => {
@@ -13,7 +14,7 @@ export const Cart = () => {
             <div className="cartTotal">
                 <h3>Detalle de compra</h3>
                 <p>Total: ${cartTotal} </p>
-                <Button link="/cart" action="comprar" />
+                <CartOrder />
             </div> : ""}
             <div>
                 {cart.length ? cart.map(prod => 

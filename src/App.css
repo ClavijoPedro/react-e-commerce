@@ -256,6 +256,11 @@
   margin-bottom: 50px;
 }
 
+.cartOrderContainer{
+  display: flex;
+  flex-direction: column;
+}
+
 
 
 /* Estilos Generales*/

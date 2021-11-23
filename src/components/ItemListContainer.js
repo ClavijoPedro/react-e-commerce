@@ -9,7 +9,6 @@ export const ItemListContainer = () => {
     const {categoryId} = useParams();  
     const [items, setItems] = useState(null);
     
-  
     useEffect(() => {
         /*guardo la base de datos (db) en una variable */
         const db = getFirestore();

@@ -5,16 +5,15 @@ import {
   Route,
 } from "react-router-dom";
 
+/*contexts*/
+import {CartProvider} from './contexts/CartContext'
 
 /*componentes*/
 import {NavBar} from './components/NavBar'
 import { ItemDetailContainer } from './components/ItemDetailContainer';
 import { ItemListContainer } from './components/ItemListContainer';
 import { Cart } from './components/Cart';
-
-/*contexts*/
-import {CartProvider} from './contexts/CartContext'
-
+import { Footer } from './components/Footer';
 
 
 function App() {
@@ -36,6 +35,7 @@ function App() {
               <Cart />
             </Route>
         </Switch>
+        <Footer />
       </CartProvider>
     </BrowserRouter>
   );

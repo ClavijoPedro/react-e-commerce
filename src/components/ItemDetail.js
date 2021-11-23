@@ -23,10 +23,15 @@ export const ItemDetail = ({item}) => {
                     <p className="itemDetailText">{item.description}</p>
                     <p>${item.price}</p>
                     {count ? 
-                    <><ItemCount stock={item.stock} initial={1} item= {item} onAdd= {countDismount} />
-                        <Button link= "/" action="volver" /></> 
-                    : <><Button link= "/cart" action={`Terminar compra`}/>
-                        <Button link= "/" action="volver" /> </>}
+                    <>
+                        <ItemCount stock={item.stock} initial={1} item= {item} onAdd= {countDismount} />
+                        <Button link= "/" action="volver" />
+                    </> 
+                    : 
+                    <>
+                        <Button link= "/cart" action={`Terminar compra`}/>
+                        <Button link= "/" action="volver" /> 
+                    </>}
                 </div>
             </div>
         </div>

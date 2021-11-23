@@ -5,7 +5,6 @@ import { ItemCart } from "./ItemCart";
 
 export const Cart = () => {
     const {cart, cartTotal, cartEmpty} = useCartContext();
-    console.log("esto es cart de la pagina cart" + cart);
 
     return(
         <div className="cartContainer">

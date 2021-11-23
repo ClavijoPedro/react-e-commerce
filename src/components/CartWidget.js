@@ -4,7 +4,7 @@ import cartIcon from './images/cartIcon.png';
 
 export const CartWidget = () =>{ 
     const {cart} = useCartContext();
-    console.log("esto es", cart.length) 
+    
     return(
         <Link to="/cart">
             <div className="cartWidget">

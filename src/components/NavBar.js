@@ -3,6 +3,12 @@ import { CartWidget } from './CartWidget';
 import logo from './images/logo.svg';
 
 export const NavBar = () => {
+    const links = [
+        {to: "/", path:"inicio"},
+        {to: "/category/remeras", path:"remeras"},
+        {to: "/category/pantalones", path:"pantalones"},
+        {to: "/category/zapatillas", path:"zapatillas"},
+    ]
     return (
         <div className="App-header">
             <nav className="nav">
@@ -11,11 +17,10 @@ export const NavBar = () => {
                 </Link>
                 <div className="navLinks">
                     <ul>
-                        <li><Link to="/">Inicio</Link></li>
-                        <li><Link to="/category/remeras">remeras</Link></li>
-                        <li><Link to="/category/pantalones">pantalones</Link></li>
-                        <li><Link to="/category/zapatillas">zapatillas</Link></li>
-                    </ul>
+                        {links.map(link => 
+                            <li key={link.path}><Link to={link.to}>{link.path}</Link></li>
+                        )}
+                    </ul>  
                 </div>
                 <CartWidget />
             </nav>

@@ -50,12 +50,16 @@ export const CartOrder = () =>{
     ]
 /* mapeo el array y creo los inputs del form con esos atributtos (att)*/
 /* si la orden fue enviada se renderiza el numero de orden de firebase y el boton finalizar que borra el carrito*/
+
+
     return (
         <>
+            {!orderSended &&
             <form className="cartOrderContainer">
                 {input.map(att => <input value={att.value} key={att.name} type={att.type} onChange={setData} placeholder={att.pholder} name={att.name}/>)}
                 <button  disabled={!(buyerData.name && buyerData.phone && buyerData.email)} type="button" onClick={sendOrder} className="btn" >enviar orden</button>
             </form>
+            }
             {orderSended &&
                 <div className="cartOrderSended">
                     <p>El código de su pedido es:</p>

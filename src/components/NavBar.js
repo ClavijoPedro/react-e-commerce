@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { CartWidget } from './CartWidget';
-import logo from './images/logo.svg';
+import logoSport from './images/logoSport.svg'
 
 export const NavBar = () => {
     const links = [
@@ -13,7 +13,7 @@ export const NavBar = () => {
         <div className="App-header">
             <nav className="nav">
                 <Link to="/" >
-                    <img src={logo} className='navBrand' alt="Logo" />
+                    <img src={logoSport} className='navBrand' alt="Logo" />
                 </Link>
                 <div className="navLinks">
                     <ul>

@@ -5,6 +5,7 @@ import { ItemCart } from "./ItemCart";
 
 export const Cart = () => {
     const {cart, cartTotal, cartEmpty} = useCartContext();
+    
 
     return(
         <div className="cartContainer">
@@ -12,13 +13,13 @@ export const Cart = () => {
             {cart.length ? 
             <div className="cartTotal">
                 <h3>Detalle de compra</h3>
-                <p>Total: ${cartTotal} </p>
+                <p className="CartTotalPrice">Total: ${cartTotal} </p>
                 <CartOrder />
             </div> : ""}
             <div>
                 {cart.length ? cart.map(prod => 
                     <ItemCart item={prod} key={prod.id}/> 
-                ) : "está vacio..."}            
+                ) : <p className="bold">está vacio...</p>}            
             </div>
             <div>
                 {cart.length ? <button className="btn" onClick={() => cartEmpty()}>vaciar carrito</button> 

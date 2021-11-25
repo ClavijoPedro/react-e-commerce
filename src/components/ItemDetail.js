@@ -19,7 +19,7 @@ export const ItemDetail = ({item}) => {
             <div className="itemDetailBody">
                 <img className="detailImg" src={item.image} alt="detailImg" />
                 <div className="itemDetailInfo">
-                    <h2 className="itemDetailName">{item.type} {item.name}</h2>
+                    <h2 className="itemDetailName">{item.name}</h2>
                     <p className="itemDetailText">{item.description}</p>
                     <p>${item.price}</p>
                     {count ? 

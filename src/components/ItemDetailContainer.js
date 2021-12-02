@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router";
-// import Products from '../Products.json'
 import { ItemDetail } from "./ItemDetail";
 import { Loader } from "./Loader";
 import { getFirestore } from "../firebase"; 
@@ -19,7 +18,8 @@ export const ItemDetailContainer = () => {
         /* seteo la data al estado del item*/ 
         getDoc(itemRef).then((snapshot) => {
             if(snapshot.exists()){
-                setItemSelected(snapshot.data());
+                /* seteo la data al estado y le modifico el id por el de firebase*/
+                setItemSelected({...snapshot.data(), id: itemId});
             }
         })
     }, [itemId]);

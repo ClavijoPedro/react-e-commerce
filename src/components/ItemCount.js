@@ -17,6 +17,7 @@ export const ItemCount = ({initial, stock, onAdd, item}) => {
         if(counter > 1){
             setCounter(counter - 1)};
         }
+        
     /* funcion como parametro del onClick que ejecuta los metodos del context y el onAdd*/
     const itemToCart = () => {
         addItem(item, counter);

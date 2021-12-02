@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import { useCartContext } from '../contexts/CartContext';
 import { Button } from './Button';
 import {ItemCount} from './ItemCount';
 

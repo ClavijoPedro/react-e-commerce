@@ -17,6 +17,9 @@ export const CartProvider = ({children}) => {
     /*seteo el estado del total de carrito y cuando hago onAdd le suma los precios de los items agrgados*/
     const [cartTotal, setCartTotal]= useState(null)
 
+    /*seteo el estado que acumula ids*/
+    const [idUpdate, setIdUpdate] = useState([]);
+
     /*isInCart aplico some que si encuentra un item igual en el cart devuelve true*/
     const isInCart = (prod) => cart.some(product => product.id === prod.id);
 
@@ -25,9 +28,10 @@ export const CartProvider = ({children}) => {
         // const isInCart = cart.some(product => product.id === prod.id);
         /*si isInCart es distinto de true agrego la propiedad al item y seteo el estado agregando el producto al array  y seteo el carTotal*/
         if(!isInCart(prod)){
-            const product = {...prod, quantity: qty}
+            const product = {...prod, quantity: qty};
             setCart([...cart, product]);
-            setCartTotal(cartTotal + prod.price * qty)
+            setCartTotal(cartTotal + prod.price * qty);
+            setIdUpdate([...idUpdate, prod.id]);
         }
     }
     
@@ -44,11 +48,10 @@ export const CartProvider = ({children}) => {
     const cartEmpty = () => {
         setCart([]);
         setCartTotal(null)
-
     };
 
     return (
-        <CartContext.Provider value={{cart, cartTotal, addItem, isInCart, removeItem, cartEmpty}}>
+        <CartContext.Provider value={{cart, cartTotal, idUpdate, addItem, isInCart, removeItem, cartEmpty}}>
             {children}
         </CartContext.Provider>
     );

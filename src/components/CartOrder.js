@@ -1,16 +1,16 @@
-import { addDoc, collection, getFirestore } from "@firebase/firestore";
+import { addDoc, collection, doc, getFirestore, writeBatch } from "@firebase/firestore";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCartContext } from "../contexts/CartContext";
 
 export const CartOrder = () =>{
-    const [orderSended, setOrderSended] = useState(false)
-    const [orderId, setOrderId] = useState("")
-    
+    const [orderSended, setOrderSended] = useState(false);
+    const [orderId, setOrderId] = useState("");
+
     const db = getFirestore();
 
 /* traigo el context del cart*/
-    const {cartTotal, cart, cartEmpty} = useCartContext();
+    const {cartTotal, cart, cartEmpty, idUpdate} = useCartContext();
 /* creo un estado que contiene un objeto con los atributos del comprador*/
     const [buyerData, setBuyerData] = useState({
         name: "",
@@ -32,7 +32,6 @@ export const CartOrder = () =>{
             items: [...cart],
             total: cartTotal
         };
-
         const orderList = collection(db, "orders");
         addDoc(orderList, itemOrder)
         .then((snapshot) => { 
@@ -42,15 +41,29 @@ export const CartOrder = () =>{
         setOrderSended(true);
     }
     
+    const finishOrder = () => {
+        /* actualizo el stock de los items del cart en firebase utilizando el array de id´s idUpdate*/
+        const batch = writeBatch(db);
+        idUpdate.forEach((id) => {
+            const itemRef = doc(db, "items", id);
+            const itemCart = cart.find(prod => prod.id === id);
+            batch.update(itemRef, {stock: itemCart.stock - itemCart.quantity});
+        });
+        batch.commit();
+        cartEmpty();
+    }
+    
+    /*renderizado condicional de la class para el ID de orden*/
+    const idClass= orderId ? 'cartOrderCode' : "" ;
+
 /* creo un array con los atributos (att) de los input*/
     const input = [
         {value:buyerData.name, type: "text", pholder: "ingrese su nombre", name: "name"},
-        {value:buyerData.phone,type: "tel", pholder: "ingrese su telefono", name: "phone"},
-        {value:buyerData.email,type: "email", pholder: "ingrese su email", name: "email"},
+        {value:buyerData.phone, type: "tel", pholder: "ingrese su telefono", name: "phone"},
+        {value:buyerData.email, type: "email", pholder: "ingrese su email", name: "email"},
     ]
 /* mapeo el array y creo los inputs del form con esos atributtos (att)*/
-/* si la orden fue enviada se renderiza el numero de orden de firebase y el boton finalizar que borra el carrito*/
-
+/* si la orden fue enviada se renderiza el numero de orden de firebase y el boton finalizar que borra el carrito*/ 
 
     return (
         <>
@@ -63,9 +76,9 @@ export const CartOrder = () =>{
             {orderSended &&
                 <div className="cartOrderSended">
                     <p>El código de su pedido es:</p>
-                    <span>{orderId}</span>
+                    <span className={idClass}>{orderId}</span>
                     <Link to="/">
-                        <button type="button"  onClick={cartEmpty} className="btn">finalizar</button>
+                        <button type="button"  onClick={finishOrder} className="btn">finalizar</button>
                     </Link>
                 </div>
             }

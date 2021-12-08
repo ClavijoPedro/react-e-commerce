@@ -3,7 +3,6 @@ import { useCartContext } from '../contexts/CartContext';
 import cartIcon from './images/cartIcon.svg';
 import cartFull from './images/cartFull.svg'
 
-
 export const CartWidget = () =>{ 
     const {cart} = useCartContext();
     

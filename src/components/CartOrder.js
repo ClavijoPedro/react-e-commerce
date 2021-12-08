@@ -26,7 +26,8 @@ export const CartOrder = () =>{
     }
 /* funcion que se dispara en onClick del form y envia la data a firebase*/
 /* toma la promesa del addDoc y setea el orderID con el id de la orden de firebase*/
-    const sendOrder = () => {
+    const sendOrder = (e) => {
+        e.preventDefault();
         const itemOrder = {
             buyer: buyerData,
             items: [...cart],
@@ -58,9 +59,21 @@ export const CartOrder = () =>{
 
 /* creo un array con los atributos (att) de los input*/
     const input = [
-        {value:buyerData.name, type: "text", pholder: "ingrese su nombre", name: "name"},
-        {value:buyerData.phone, type: "tel", pholder: "ingrese su telefono", name: "phone"},
-        {value:buyerData.email, type: "email", pholder: "ingrese su email", name: "email"},
+        {
+            value:buyerData.name,
+            type: "text", pholder: "ingrese su nombre",
+            name: "name"
+        },
+        {
+            value:buyerData.phone,
+            type: "tel", pholder: "ingrese su telefono",
+            name: "phone"
+        },
+        {
+            value:buyerData.email,
+            type: "email", pholder: "ingrese su email",
+            name: "email"
+        },
     ]
 /* mapeo el array y creo los inputs del form con esos atributtos (att)*/
 /* si la orden fue enviada se renderiza el numero de orden de firebase y el boton finalizar que borra el carrito*/ 
@@ -68,9 +81,9 @@ export const CartOrder = () =>{
     return (
         <>
             {!orderSended &&
-            <form className="cartOrderContainer">
+            <form className="cartOrderContainer" onSubmit={sendOrder}>
                 {input.map(att => <input value={att.value} key={att.name} type={att.type} onChange={setData} placeholder={att.pholder} name={att.name}/>)}
-                <button  disabled={!(buyerData.name && buyerData.phone && buyerData.email)} type="button" onClick={sendOrder} className="btn" >enviar orden</button>
+                <button  disabled={!(buyerData.name && buyerData.phone && buyerData.email)} type="submit" className="btn" >enviar orden</button>
             </form>
             }
             {orderSended &&

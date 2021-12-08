@@ -6,7 +6,6 @@ import { ItemCart } from "./ItemCart";
 export const Cart = () => {
     const {cart, cartTotal, cartEmpty} = useCartContext();
     
-
     return(
         <div className="cartContainer">
             <h2>Tu carrito</h2>

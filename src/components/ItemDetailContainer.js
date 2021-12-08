@@ -22,6 +22,7 @@ export const ItemDetailContainer = () => {
                 setItemSelected({...snapshot.data(), id: itemId});
             }
         })
+        .catch((err) => {console.log("error " + err)});
     }, [itemId]);
 
 

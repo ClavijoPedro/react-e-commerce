@@ -28,7 +28,7 @@ export const CartProvider = ({children}) => {
         // const isInCart = cart.some(product => product.id === prod.id);
         /*si isInCart es distinto de true agrego la propiedad al item y seteo el estado agregando el producto al array  y seteo el carTotal*/
         if(!isInCart(prod)){
-            const product = {...prod, quantity: qty};
+            const product = {...prod, quantity: qty, stock: prod.stock - qty};
             setCart([...cart, product]);
             setCartTotal(cartTotal + prod.price * qty);
             setIdUpdate([...idUpdate, prod.id]);
@@ -47,7 +47,8 @@ export const CartProvider = ({children}) => {
     /*metodo vaciar cart: seteo el estado del cart a array vacio y el estdo del cartTotal a null*/
     const cartEmpty = () => {
         setCart([]);
-        setCartTotal(null)
+        setCartTotal(null);
+        setIdUpdate([]);
     };
 
     return (

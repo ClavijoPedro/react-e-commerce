@@ -24,11 +24,15 @@ export const CartOrder = () =>{
             [e.target.name] : e.target.value
         });
     }
+
+    const date = new Date();
+	const orderDate = date.toLocaleDateString();
 /* funcion que se dispara en onClick del form y envia la data a firebase*/
 /* toma la promesa del addDoc y setea el orderID con el id de la orden de firebase*/
     const sendOrder = (e) => {
         e.preventDefault();
         const itemOrder = {
+            date: orderDate,
             buyer: buyerData,
             items: [...cart],
             total: cartTotal
@@ -48,7 +52,7 @@ export const CartOrder = () =>{
         idUpdate.forEach((id) => {
             const itemRef = doc(db, "items", id);
             const itemCart = cart.find(prod => prod.id === id);
-            batch.update(itemRef, {stock: itemCart.stock - itemCart.quantity});
+            batch.update(itemRef, {stock: itemCart.stock});
         });
         batch.commit();
         cartEmpty();
@@ -62,17 +66,20 @@ export const CartOrder = () =>{
         {
             value:buyerData.name,
             type: "text", pholder: "ingrese su nombre",
-            name: "name"
+            name: "name",
+            pattern: "[A-Za-z]{4,}"
         },
         {
             value:buyerData.phone,
             type: "tel", pholder: "ingrese su telefono",
-            name: "phone"
+            name: "phone",
+            pattern:"[0-9]{10,}"
         },
         {
             value:buyerData.email,
             type: "email", pholder: "ingrese su email",
-            name: "email"
+            name: "email",
+            pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$"
         },
     ]
 /* mapeo el array y creo los inputs del form con esos atributtos (att)*/
@@ -82,8 +89,17 @@ export const CartOrder = () =>{
         <>
             {!orderSended &&
             <form className="cartOrderContainer" onSubmit={sendOrder}>
-                {input.map(att => <input value={att.value} key={att.name} type={att.type} onChange={setData} placeholder={att.pholder} name={att.name}/>)}
-                <button  disabled={!(buyerData.name && buyerData.phone && buyerData.email)} type="submit" className="btn" >enviar orden</button>
+                {input.map(att => 
+                    <input 
+                    value={att.value}
+                    key={att.name}
+                    type={att.type}
+                    onChange={setData}
+                    placeholder={att.pholder} name={att.name}
+                    pattern={att.pattern}
+                    required
+                />)}
+                <button type="submit" className="btn" >enviar orden</button>
             </form>
             }
             {orderSended &&

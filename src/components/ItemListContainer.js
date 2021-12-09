@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
-// import Products from '../Products.json'
 import { useParams } from "react-router";
 import { getFirestore } from "../firebase"; 
 import { collection, query, where, getDocs } from "firebase/firestore";
+import { useCartContext } from "../contexts/CartContext";
 
 export const ItemListContainer = () => {
     const {categoryId} = useParams();  
     const [items, setItems] = useState(null);
+    const {idUpdate} = useCartContext();
     
     useEffect(() => {
         /*guardo la base de datos (db) en una variable */
@@ -22,7 +23,7 @@ export const ItemListContainer = () => {
             })
             .catch((err) => {console.log("error " + err)});
   
-    }, [categoryId]);
+    }, [categoryId, idUpdate]);
 
     return(
         /*le asigno una prop items que tiene el como valor la variable item de la promise*/

@@ -22,6 +22,7 @@ Dentro de la terminal:
 ## Vista previa
 
 
+![VistaPreviaE-commerce](https://user-images.githubusercontent.com/87502452/145145724-9b03eddd-c95e-455a-9668-f09a34203547.gif)
 
 
 App desarrollada por Pedro Ignacio Clavijo.

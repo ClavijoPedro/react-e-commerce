@@ -6,18 +6,16 @@ import { useCartContext } from "../contexts/CartContext";
 export const CartOrder = () =>{
     const [orderSended, setOrderSended] = useState(false);
     const [orderId, setOrderId] = useState("");
-
     const db = getFirestore();
 
-/* traigo el context del cart*/
     const {cartTotal, cart, cartEmpty, idUpdate} = useCartContext();
-/* creo un estado que contiene un objeto con los atributos del comprador*/
+
     const [buyerData, setBuyerData] = useState({
         name: "",
         phone: "",
         email: ""
     })
-    /* funcion que toma los datos del input y los setea al objeto del estado buyerData*/
+
     const setData = (e) => {
         setBuyerData({
             ...buyerData,
@@ -27,8 +25,7 @@ export const CartOrder = () =>{
 
     const date = new Date();
 	const orderDate = date.toLocaleDateString();
-/* funcion que se dispara en onClick del form y envia la data a firebase*/
-/* toma la promesa del addDoc y setea el orderID con el id de la orden de firebase*/
+
     const sendOrder = (e) => {
         e.preventDefault();
         const itemOrder = {
@@ -47,7 +44,6 @@ export const CartOrder = () =>{
     }
     
     const finishOrder = () => {
-        /* actualizo el stock de los items del cart en firebase utilizando el array de id´s idUpdate*/
         const batch = writeBatch(db);
         idUpdate.forEach((id) => {
             const itemRef = doc(db, "items", id);
@@ -58,10 +54,8 @@ export const CartOrder = () =>{
         cartEmpty();
     }
     
-    /*renderizado condicional de la class para el ID de orden*/
     const idClass= orderId ? 'cartOrderCode' : "" ;
 
-/* creo un array con los atributos (att) de los input*/
     const input = [
         {
             value:buyerData.name,
@@ -82,8 +76,6 @@ export const CartOrder = () =>{
             pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$"
         },
     ]
-/* mapeo el array y creo los inputs del form con esos atributtos (att)*/
-/* si la orden fue enviada se renderiza el numero de orden de firebase y el boton finalizar que borra el carrito*/ 
 
     return (
         <>

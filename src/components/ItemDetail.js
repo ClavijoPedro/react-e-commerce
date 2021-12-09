@@ -3,7 +3,6 @@ import { Button } from './Button';
 import {ItemCount} from './ItemCount';
 
 export const ItemDetail = ({item}) => {
-    /*creo el estado para el componente itemCount*/
     const [count, setCount] = useState(true)
     
     const countDismount = () => {
@@ -11,8 +10,7 @@ export const ItemDetail = ({item}) => {
             setCount(false)
         }
     }
-    /*tomo la props item que pase por parametro y renderizo el producto*/
-    /*si count es true renderizo el itemcount sino renderizo el button ir al carrito y button volver*/
+
     return(
         <div className="itemDetail">
             <div className="itemDetailBody">

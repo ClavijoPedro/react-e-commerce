@@ -11,13 +11,10 @@ export const ItemListContainer = () => {
     const {idUpdate} = useCartContext();
     
     useEffect(() => {
-        /*guardo la base de datos (db) en una variable */
         const db = getFirestore();
-            /*filtro la collección por categorias usando url params, sino muestro lista entera*/ 
             const q = categoryId ? query(collection(db, "items"),
             where("type", "==", categoryId)) 
             : collection(db, "items");
-            /* seteo la data al estado de items */
             getDocs(q).then((snapshot) => {
                 setItems(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
             })
@@ -26,7 +23,6 @@ export const ItemListContainer = () => {
     }, [categoryId, idUpdate]);
 
     return(
-        /*le asigno una prop items que tiene el como valor la variable item de la promise*/
         <section className="itemList">
             <div className="cardContainer">
                 <ItemList items={items} />

@@ -19,7 +19,6 @@ export const ItemListContainer = () => {
                 setItems(snapshot.docs.map((doc) => ({...doc.data(), id: doc.id})));
             })
             .catch((err) => {console.log("error " + err)});
-  
     }, [categoryId, idUpdate]);
 
     return(

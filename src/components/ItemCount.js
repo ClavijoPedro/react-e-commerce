@@ -2,18 +2,14 @@ import { useState } from 'react';
 import { useCartContext } from '../contexts/CartContext';
 
 export const ItemCount = ({initial, stock, onAdd, item}) => {
-    /*agrego el cart context con sus metodos*/
     const {addItem} = useCartContext();
-
-    /*seteo el estado del counter */
     const [counter, setCounter] = useState(initial);
     
     const sum = () => {
         if(stock > 0 && (counter < stock )){
-            setCounter(counter + 1); 
+            setCounter(counter + 1);
         }
     };
-
     const rest = () => {
         if(counter > 1){
             setCounter(counter - 1)};

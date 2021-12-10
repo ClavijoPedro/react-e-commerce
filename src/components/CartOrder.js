@@ -6,16 +6,15 @@ import { useCartContext } from "../contexts/CartContext";
 export const CartOrder = () =>{
     const [orderSended, setOrderSended] = useState(false);
     const [orderId, setOrderId] = useState("");
+
     const db = getFirestore();
 
     const {cartTotal, cart, cartEmpty, idUpdate} = useCartContext();
-
     const [buyerData, setBuyerData] = useState({
         name: "",
         phone: "",
         email: ""
     })
-
     const setData = (e) => {
         setBuyerData({
             ...buyerData,
@@ -25,7 +24,6 @@ export const CartOrder = () =>{
 
     const date = new Date();
 	const orderDate = date.toLocaleDateString();
-
     const sendOrder = (e) => {
         e.preventDefault();
         const itemOrder = {
@@ -61,19 +59,22 @@ export const CartOrder = () =>{
             value:buyerData.name,
             type: "text", pholder: "ingrese su nombre",
             name: "name",
-            pattern: "[A-Za-z]{4,}"
+            pattern: "[A-Za-z A-za-z]{4,}",
+            title: "ingrese su nombre sin números ni carctéres especiales"
         },
         {
             value:buyerData.phone,
             type: "tel", pholder: "ingrese su telefono",
             name: "phone",
-            pattern:"[0-9]{10,}"
+            pattern:"[0-9]{10,}",
+            title:"ingrese un número telefónico sin espacios ni guiones"
         },
         {
             value:buyerData.email,
             type: "email", pholder: "ingrese su email",
             name: "email",
-            pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$"
+            pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$",
+            title:"ingrese un mail foo@foo.com"
         },
     ]
 
@@ -89,6 +90,7 @@ export const CartOrder = () =>{
                     onChange={setData}
                     placeholder={att.pholder} name={att.name}
                     pattern={att.pattern}
+                    title={att.title}
                     required
                 />)}
                 <button type="submit" className="btn" >enviar orden</button>

@@ -10,7 +10,7 @@ export const ItemDetail = ({item}) => {
             setCount(false)
         }
     }
-
+    
     return(
         <div className="itemDetail">
             <div className="itemDetailBody">

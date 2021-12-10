@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 export const Item = ({item}) =>{
     const stock = item.stock > 0;
     
-/*recive la prop item (item={pructos}) asignada en itemList e imprime las propiedades de cada uno en una card*/ 
     return (
         <div className="card">
             <img className="cardImg" src={item.image} alt="img Producto" />
